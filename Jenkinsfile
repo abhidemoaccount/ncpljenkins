@@ -1,4 +1,4 @@
-def registry  ='https://bkrishna928117.jfrog.io/'
+def registry  ='http://18.212.182.146:8081/#browse/browse:maven-releases'
 pipeline {
     agent any
     tools {
@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'prod' , url: 'https://github.com/bkrrajmali/cicdtest.git'
+                git branch: 'main' , url: 'https://github.com/abhidemoaccount/jenkins.git'
             }
         }
          stage('Versioning') {
@@ -64,7 +64,7 @@ pipeline {
             steps {
                 script {
                         echo '<--------------- Jar Publish Started --------------->'
-                         def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"jfrogaccess"
+                         def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"nexus-cred"
                          def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}";
                          def uploadSpec = """{
                               "files": [
