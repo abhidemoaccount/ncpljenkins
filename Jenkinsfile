@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main' , url: 'https://github.com/abhidemoaccount/jenkins.git'
+                git branch: 'prod' , url: 'https://github.com/abhidemoaccount/jenkins.git'
             }
         }
          stage('Versioning') {
